@@ -1,11 +1,13 @@
-
+import { Provider } from 'react-redux';
 import './App.css';
+import Body from './components/Body';
+import AppStore from './utils/AppStore';
 
 function App() {
   return (
-    <div className="App bg-black min-h-screen">
-      <h1 className='font-bold text-3xl text-slate-800'>Binge</h1>
-    </div>
+    <Provider store={AppStore}>
+      <Body />
+    </Provider>
   );
 }
 
