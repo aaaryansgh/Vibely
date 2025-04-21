@@ -15,21 +15,18 @@ const Signup = () => {
   const navigate=useNavigate();
   const dispatch=useDispatch();
   const handlebtnclick=()=>{
-    //validate the form data
     const msg=checkValidData(email.current.value,password.current.value)
     setError(msg);
     if(msg) return;
-    //Sign up logic
     createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
     .then((userCredential) => {
-    // Signed up 
       const user = userCredential.user;
       updateProfile(user, {
         displayName:name.current.value
       }).then(() => {
         const {uid,email,displayName} = auth.currentUser;
         dispatch(addUser({uid:uid,email:email,displayName:displayName}))
-        navigate("/login")
+        navigate("/")
       }).catch((error) => {
         setError(error.message)
       });

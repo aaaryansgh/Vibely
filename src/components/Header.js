@@ -1,23 +1,37 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { signOut } from 'firebase/auth';
 import { auth } from '../utils/firebase';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { onAuthStateChanged } from 'firebase/auth';
+import { addUser,removeUser } from '../utils/Userslice';
 
 const Header = () => {
     const navigate=useNavigate();
     const user=useSelector(store=>store.user);
+    const dispatch=useDispatch();
     const handlesignout=()=>{
         signOut(auth).then(() => {
             navigate("/login");
           }).catch((error) => {
             // An error happened.
-          });
-          
+          });  
     }
+    useEffect(()=>{
+       const unsubscribe= onAuthStateChanged(auth, (user) => {
+            if (user) {
+              const {uid,email,displayName} = user;
+              dispatch(addUser({uid:uid,email:email,displayName:displayName}))
+            } else {
+              dispatch(removeUser())
+              navigate("/login")
+            }
+          });
+          return ()=>unsubscribe();
+    },[dispatch])
   return (
-    <div className='flex justify-center text-purple-200'>
-        <nav className="fixed top-0 w-full backdrop-blur-md bg-white/5 border border-white/20 rounded-3xl shadow-lg  flex flex-wrap justify-center max-w-2xl my-5">
+    <div className='flex justify-center text-purple-400'>
+        <nav className="fixed top-0 w-full backdrop-blur-md bg-white/5 border border-pink-300 rounded-3xl shadow-lg  flex flex-wrap justify-center max-w-2xl my-5">
             <ul className='flex justify-center space-x-10 my-2'>
                 {user?(<>
                     <Link to="/">
@@ -26,7 +40,8 @@ const Header = () => {
                     <Link to="/browse">
                         <li className='hover:text-purple-700 cursor-pointer'>Explore</li>
                     </Link>
-                    <li>{user.displayName}</li>
+                    <Link to="/dashboard"> <li>{user.displayName}</li></Link>
+                   
                     <button className='hover:text-red-800 cursor-pointer' onClick={handlesignout}>SignOut</button>
                 </>):
                 (<>
