@@ -1,4 +1,4 @@
-# movGPT
+# Vibely
  - Created React App
  - Configured tailwindCSS
  - Header
@@ -30,8 +30,11 @@
       - loop=1 → Ensures the video keeps looping.
       - playlist=YOUR_VIDEO_ID → Required for looping a single video.
       - rel=0 → Prevents related videos from showing at the end.
-
-
+   - Created hooks for different upcoming, top rated and popular movies
+   - GPT searchBar
+     - Added multilingual feature
+     - Made header dynamic
+     - Integrate GPT Api
 
 
 # Features

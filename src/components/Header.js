@@ -5,10 +5,12 @@ import { auth } from '../utils/firebase';
 import { useDispatch, useSelector } from 'react-redux';
 import { onAuthStateChanged } from 'firebase/auth';
 import { addUser,removeUser } from '../utils/Userslice';
-
+import { toggleGptSearchView } from '../utils/Gptslice';
+import {changeLang} from '../utils/LangSlice'
 const Header = () => {
     const navigate=useNavigate();
     const user=useSelector(store=>store.user);
+    const gpt=useSelector(store=>store.gpt.showGptSearch)
     const dispatch=useDispatch();
     const handlesignout=()=>{
         signOut(auth).then(() => {
@@ -16,6 +18,14 @@ const Header = () => {
           }).catch((error) => {
             // An error happened.
           });  
+    }
+    const handleGptsearch=()=>{
+      //toggle gpt search button
+      dispatch(toggleGptSearchView());
+    }
+    const handleLangChange=(e)=>{
+      console.log(e.target.value);
+      dispatch(changeLang(e.target.value))
     }
     useEffect(()=>{
        const unsubscribe= onAuthStateChanged(auth, (user) => {
@@ -30,18 +40,26 @@ const Header = () => {
           return ()=>unsubscribe();
     },[dispatch])
   return (
-    <div className='flex justify-center text-purple-400'>
-        <nav className="fixed top-0 w-full backdrop-blur-md bg-white/5 border border-pink-300 rounded-3xl shadow-lg  flex flex-wrap justify-center max-w-2xl my-5">
+    <div className='flex justify-center text-purple-300'>
+        <nav className="fixed top-0 w-full backdrop-blur-md bg-white/5 border border-white/20 rounded-3xl shadow-lg  flex flex-wrap justify-center max-w-2xl my-5">
             <ul className='flex justify-center space-x-10 my-2'>
                 {user?(<>
                     <Link to="/">
                         <li className='hover:text-purple-700 cursor-pointer'>Home</li>
                     </Link>
                     <Link to="/browse">
-                        <li className='hover:text-purple-700 cursor-pointer'>Explore</li>
+                        <li className='hover:text-purple-700 cursor-pointer' onClick={handleGptsearch}>{gpt?"Explore":"GPT"}</li>
                     </Link>
                     <Link to="/dashboard"> <li>{user.displayName}</li></Link>
-                   
+                    
+                    {gpt && 
+                    <>
+                      <select className='bg-white/5 px-3 text-white rounded-full' onChange={handleLangChange}>
+                      <option value='en' className='bg-black'>English</option>
+                      <option value='hi' className='bg-black'>Hindi</option>
+                      <option value='es' className='bg-black'>Spanish</option>
+                      </select>
+                    </>}
                     <button className='hover:text-red-800 cursor-pointer' onClick={handlesignout}>SignOut</button>
                 </>):
                 (<>
