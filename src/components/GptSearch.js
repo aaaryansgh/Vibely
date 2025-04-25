@@ -4,7 +4,7 @@ import Gptmovie from './gptmovie'
 
 const GptSearch = () => {
   return (
-    <div>
+    <div className='min-h-screen w-screen'>
       <GptSearchBar />
       <Gptmovie />
     </div>
