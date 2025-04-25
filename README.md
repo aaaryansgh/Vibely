@@ -1,4 +1,4 @@
-# Vibely
+# Vibely : A movie reccomender website
  - Created React App
  - Configured tailwindCSS
  - Header
@@ -58,4 +58,3 @@
  - GPT
     - Search Bar
     - Movie Suggestions
- - Made responsive
