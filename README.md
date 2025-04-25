@@ -1,4 +1,4 @@
-# Vibely
+# Vibely : A movie reccomender website
  - Created React App
  - Configured tailwindCSS
  - Header
