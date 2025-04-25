@@ -35,6 +35,12 @@
      - Added multilingual feature
      - Made header dynamic
      - Integrate GPT Api
+     - GPT search api call
+     - Memoization
+     - fetched gptmoviesuggestion from tmdb
+     - Reused movielist component in gpt movie list page
+     - Added env file
+     
 
 
 # Features
@@ -52,3 +58,4 @@
  - GPT
     - Search Bar
     - Movie Suggestions
+ - Made responsive

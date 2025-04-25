@@ -45,7 +45,7 @@ const Signup = () => {
     <div>
         <div className='min-h-screen flex items-center justify-center bg-black'>
             <form onSubmit={(e)=>e.preventDefault()} className='flex flex-col items-center justify-center backdrop-blur-md bg-white/5 border border-white/20 py-5 px-10 rounded-3xl shadow-lg mt-10'>
-                <h1 className='text-2xl text-white font-bold mb-8'>Sign Up</h1>
+                <h1 className='text-2xl bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-transparent bg-clip-text leading-normal overflow-visible font-bold mb-8'>Sign Up</h1>
                 <input type="text" placeholder='Username' className='bg-white/5 text-white rounded-md p-3 m-2 w-full' ref={name} />
                 <input type="text" placeholder='Email' className='bg-white/5 text-white rounded-md p-3 m-2 w-full' ref={email} />
                 <input type="password" placeholder='Password' className='bg-white/5 text-white rounded-md p-3 m-2 w-full' ref={password} />

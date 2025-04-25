@@ -40,8 +40,8 @@ const Header = () => {
           return ()=>unsubscribe();
     },[dispatch])
   return (
-    <div className='flex justify-center text-purple-300'>
-        <nav className="fixed top-0 w-full backdrop-blur-md bg-white/5 border border-white/20 rounded-3xl shadow-lg  flex flex-wrap justify-center max-w-2xl my-5">
+    <div className='flex justify-center text-white bg-black'>
+        <nav className=" w-full backdrop-blur-md bg-white/5 border border-white/20 rounded-3xl shadow-lg  flex flex-wrap justify-center max-w-2xl my-5">
             <ul className='flex justify-center space-x-10 my-2'>
                 {user?(<>
                     <Link to="/">
