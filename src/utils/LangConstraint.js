@@ -1,15 +1,15 @@
 const Lang={
     en:{
         Search:"Search",
-        Placeholder:"What you want to watch?"
+        Placeholder:"Describe your mood and movie genre?"
     },
     hi:{
         Search:"खोज",
-        Placeholder:"आप देखना क्या चाहते हैं?"
+        Placeholder:"अपने मूड और फिल्म शैली का वर्णन करें?"
     },
     es:{
         Search:"buscar",
-        Placeholder:"¿Que quieres ver?"
+        Placeholder:"¿Describe tu estado de ánimo y el género de la película?"
     }
 
 }

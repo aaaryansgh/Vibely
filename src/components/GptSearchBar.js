@@ -17,7 +17,7 @@ const GptSearchBar = () => {
     const handleGptClick=async()=>{
       console.log(searchtext);
       //Make an api call to gpt api and get movie result
-      const prompt=`Act as professional movie recommendation system.Show me released ${searchtext.current.value} movie. Only give me names of top 5 movies,comma seperated like the example result given ahead. Example result: gadar, Sholay, Don, Dhoom, Bang bang.`
+      const prompt=`Act as professional movie recommender on the basis of user mood and genre. ${searchtext.current.value} is the user mood and genre. Only give me names of top 5 movies,comma seperated like the example result given ahead. Example result: gadar, Sholay, Don, Dhoom, Bang bang.`
       const response = await client.chat.completions.create({
         model: "gpt-4.1-mini-2025-04-14",
         messages: [
