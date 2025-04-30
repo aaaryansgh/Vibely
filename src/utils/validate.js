@@ -4,7 +4,7 @@ const checkValidData=(email,pass)=>{
    if(!isEmailvalid) {
     return "Email not valid";
    }
-   if(!isPassvalid) return "Password is not valid";
+   if(!isPassvalid) return "Password not valid. Example: Xyz123@";
    return null;
 }
 export default checkValidData;

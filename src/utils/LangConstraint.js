@@ -2,6 +2,7 @@ const Lang={
     en:{
         Search:"Search",
         Placeholder:"Describe your mood and movie genre?"
+        
     },
     hi:{
         Search:"खोज",
